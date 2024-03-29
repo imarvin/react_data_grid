@@ -40,8 +40,12 @@ const GridData = () => {
     { field: "best_price_away_name", hide: true },
     { field: "best_price_away_odd", hide: true },
     { field: "best_price_away_odd_books", hide: true },
-    
   ];
+
+  const autoSizeStrategy = {
+    type: 'fitGridWidth',
+    defaultMinWidth: 100,
+};
   
   return (
     // wrapping container with theme & size
@@ -50,6 +54,7 @@ const GridData = () => {
       className="ag-theme-quartz grid-wrapper" // applying the grid theme
     >
       <AgGridReact style={{ width: '100%', height: '100%' }}
+        autoSizeStrategy={autoSizeStrategy}
         rowData={rowData}
         columnDefs={colDefs}
         pagination={true}
