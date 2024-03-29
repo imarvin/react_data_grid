@@ -22,8 +22,8 @@ const GridData = () => {
   const colDefs = [
     { field: "bet_placed", headerName: "Bet Placed", width: 120, editable: true, cellStyle: { paddingLeft: '40px'} }, 
     { field: "arb_percent", headerName: "Arb %", width: 100, sort: 'desc', cellRenderer: p => `${Math.round(p.value * 100)}%` },
-    { field: "oddsjam_price_home_odd", headerName: "Odds Price(home)", width: 160 },
-    { field: "oddsjam_price_away_odd", headerName: "Odds Price(away)", width: 150 },
+    { field: "oddsjam_price_home_odd", wrapHeaderText: true, autoHeaderHeight: true, headerName: "Odds Price (home)", width: 140, cellStyle: {'white-space': 'normal'} },
+    { field: "oddsjam_price_away_odd", wrapHeaderText: true, autoHeaderHeight: true, headerName: "Odds Price (away)", width: 140, cellStyle: {'white-space': 'normal'} },
     { field: "market", filter: true },
     { field: "sport", filter: true, width: 120 },
     { field: "league", filter: true, width: 100 },
