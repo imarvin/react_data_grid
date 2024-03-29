@@ -19,12 +19,14 @@ const GridData = () => {
   return (
     // wrapping container with theme & size
     <div
-      className="ag-theme-quartz" // applying the grid theme
-      style={{ height: 500, width: '100%' }} // the grid will fill the size of the parent container
+      className="ag-theme-quartz grid-wrapper" // applying the grid theme
     >
       <AgGridReact style={{ width: '100%', height: '100%' }}
         rowData={rowData}
         columnDefs={colDefs}
+        pagination={true}
+        paginationPageSize='10'
+        paginationAutoPageSize={true}
       />
     </div>
   )
