@@ -20,29 +20,32 @@ const GridData = () => {
 
   // manually define column headers
   const colDefs = [
-    { field: "bet_placed", headerName: "Bet Placed", width: 120 }, 
-    { field: "arb_percent", headerName: "Arb %", width: 100 },
+    { field: "bet_placed", headerName: "Bet Placed", width: 120, editable: true, cellStyle: { paddingLeft: '40px'} }, 
+    { field: "arb_percent", headerName: "Arb %", width: 100, sort: 'desc', cellRenderer: p => `${Math.round(p.value * 100)}%` },
+    { field: "oddsjam_price_home_odd", headerName: "Odds Price(home)", width: 160 },
+    { field: "oddsjam_price_away_odd", headerName: "Odds Price(away)", width: 150 },
     { field: "market", filter: true },
-    { field: "game_id", hide: true },
     { field: "sport", filter: true, width: 120 },
     { field: "league", filter: true, width: 100 },
     { field: "home_team", headerName: "Home" },
     { field: "away_team", headerName: "Away" },
-    { field: "start_date", headerName: "Date", width: 180, cellRenderer: p => moment(p.value).format('M/DD/YYYY h:mm A') }, // TODO: parse timezone}, 
+    { field: "start_date", headerName: "Date", width: 180, cellRenderer: p => moment(p.value).format('M/DD/YYYY h:mm A') }, // TODO: parse timezone  
+    { field: "is_live", headerName: "Live", width: 60, cellRenderer: (params) => params.value ? `✓` : '' },
+    // hidden fields
+    { field: "game_id", hide: true },
+    { field: "type", hide: true },
     { field: "best_price_home_name", hide: true },
     { field: "best_price_home_odd", hide: true },
     { field: "best_price_home_odd_books", hide: true },
     { field: "best_price_away_name", hide: true },
     { field: "best_price_away_odd", hide: true },
     { field: "best_price_away_odd_books", hide: true },
-    { field: "oddsjam_price_home_odd", hide: true },
-    { field: "oddsjam_price_away_odd", hide: true },
-    { field: "type", hide: true },
-    { field: "is_live", headerName: "Live", width: 60 }
+    
   ];
   
   return (
     // wrapping container with theme & size
+    // TODO: fix horizontal scrolling
     <div
       className="ag-theme-quartz grid-wrapper" // applying the grid theme
     >
