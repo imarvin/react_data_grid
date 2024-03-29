@@ -3,6 +3,7 @@ import './App.css';
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
+import moment from 'moment';
 
 // local json data
 import data from './arbs.json';
@@ -27,7 +28,7 @@ const GridData = () => {
     { field: "league", filter: true, width: 100 },
     { field: "home_team", headerName: "Home" },
     { field: "away_team", headerName: "Away" },
-    { field: "start_date", headerName: "Date", width: 180 }, 
+    { field: "start_date", headerName: "Date", width: 180, cellRenderer: p => moment(p.value).format('M/DD/YYYY h:mm A') }, // TODO: parse timezone}, 
     { field: "best_price_home_name", hide: true },
     { field: "best_price_home_odd", hide: true },
     { field: "best_price_home_odd_books", hide: true },
